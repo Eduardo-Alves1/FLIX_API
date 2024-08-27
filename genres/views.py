@@ -5,12 +5,12 @@ from genres.serializers import GenreSerializer
 
 
 
-class GenreCreateView(generics.ListCreateAPIView):
+class GenreCreateListView(generics.ListCreateAPIView):
     queryset = Genres.objects.all()
     serializer_class = GenreSerializer
 
 
 
-class GenreRetrieverUpdateView(generics.RetrieveUpdateDestroyAPIView):
+class GenreRetrieverUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Genres.objects.all()
     serializer_class = GenreSerializer
