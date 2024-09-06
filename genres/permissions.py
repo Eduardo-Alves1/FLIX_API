@@ -1,4 +1,4 @@
-from rest_framework import permissions
+'''from rest_framework import permissions
 
 #CLASS DE PERMISSÕES
 
@@ -16,4 +16,4 @@ class GenrePermissionView(permissions.BasePermission):
         if request.method == 'DELETE':
             return request.user.has_perm('genres.delete_genres')
         
-        return False
+        return False'''

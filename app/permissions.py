@@ -1,5 +1,6 @@
 from rest_framework import permissions
 
+
 class GlobalPermission(permissions.BasePermission):
     def has_permission(self, request, view):
         model_permission_codename = self.get_model_permission_codename(
@@ -17,8 +18,7 @@ class GlobalPermission(permissions.BasePermission):
             action = self.__get_action_sufix(method)
             return f"{app_label}.{action}_{model_name}"
         except AttributeError:
-            return None
-    
+            return None    
     def __get_action_sufix(self, method):
         method_action = {
             'GET': 'view',

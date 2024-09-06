@@ -1,10 +1,10 @@
 from django.db import models
 
 
-NATIONALITY_CHOICES =(
+NATIONALITY_CHOICES = (
     ('USA', 'Estados Unidos'),
     ('BRAZIL', 'Brasil'),
-    
+
 )
 
 
