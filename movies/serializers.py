@@ -1,15 +1,18 @@
 from django.db.models import Avg
 from rest_framework import serializers
+from genres.serializers import GenreSerializer
+from actors.serializers import ActorSerializer
 from movies.models import Movie
 
-class MovieSerializer(serializers.ModelSerializer):
 
+class MovieListDetailSerializer(serializers.ModelSerializer):
+    actors = ActorSerializer(many=True)
+    genre = GenreSerializer()
     rate = serializers.SerializerMethodField(read_only=True)
-
-    class Meta:
+    class Meta: 
         model = Movie
-        fields = '__all__'
-
+        fields = ['id', 'title', 'genre', 'actors', 'release_date', 'rate', 'resume']
+    
     def get_rate(self, obj):
         rate = obj.reviews.aggregate(Avg('stars'))['stars__avg']
 
@@ -18,7 +21,13 @@ class MovieSerializer(serializers.ModelSerializer):
         return None
 
 
+class MovieSerializer(serializers.ModelSerializer):
     
+    class Meta:
+        model = Movie
+        fields = '__all__'
+
+
     def validate_release_date(self, value):
         if value.year < 1990:
             raise serializers.ValidationError("A data não pode ser anteriro a 1990.")

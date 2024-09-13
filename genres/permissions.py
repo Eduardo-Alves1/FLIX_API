@@ -15,5 +15,5 @@ class GenrePermissionView(permissions.BasePermission):
 
         if request.method == 'DELETE':
             return request.user.has_perm('genres.delete_genres')
-        
+
         return False'''
