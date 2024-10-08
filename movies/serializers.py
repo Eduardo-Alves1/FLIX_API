@@ -18,6 +18,7 @@ class MovieListDetailSerializer(serializers.ModelSerializer):
 
         if rate:
             return round(rate, 1)
+        
         return None
 
 
